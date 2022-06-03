@@ -1,35 +1,36 @@
+/*
+ * File: 10-print_comb2.c
+ * Auth: Brennan D Baraban
+ */
+
 #include <stdio.h>
 
 /**
- * main - Print 2 digit numbers
+ * main - Prints the numbers from 00 to 99, numbers separated by
+ *        a comma followed by a space, in ascending order.
  *
- * Description: Should appear in the formart provided
- * Return: Always(0) Success
+ * Return: Always 0.
  */
-
 int main(void)
 {
-	int a, b;
+	int digit1, digit2;
 
-	for (a = 48; a < 58; a++)
+	for (digit1 = 0; digit1 < 10; digit1++)
 	{
-		for (b = 48; b < 58; b++)
+		for (digit2 = 0; digit2 < 10; digit2++)
 		{
-			putchar(a);
-			putchar(b);
+			putchar((digit1 % 10) + '0');
+			putchar((digit2 % 10) + '0');
 
-		if (a == 57 && b == 57)
-		{
-			break;
-		}
-		else
-		{
+			if (digit1 == 9 && digit2 == 9)
+				continue;
+			
 			putchar(',');
 			putchar(' ');
 		}
-		}
 	}
-	putchar ('\n');
+
+	putchar('\n');
 
 	return (0);
 }
