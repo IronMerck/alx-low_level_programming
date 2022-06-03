@@ -1,38 +1,35 @@
 #include <stdio.h>
 
 /**
- * main - prints a list of double didgits
+ * main - Print 2 digit numbers
  *
- * Description: digits should not be repeated twice
+ * Description: Should appear in the formart provided
  * Return: Always(0) Success
-*/
+ */
 
 int main(void)
 {
-	int i, j;
+	int a, b;
 
-	for (i = 48; i < 58; i++)
+	for (a = 48; a < 58; a++)
 	{
-		for (j = 48; j < 58; j++)
+		for (b = 48; b < 58; b++)
 		{
-			if (i == j)
-			{
-				continue;
-			}
-			putchar(i);
-			putchar(j);
-			if (i == 56 && j == 57)
-			{
-				break;
-			}
-			else
-			{
-				putchar(',');
-				putchar(' ');
-			}
+			putchar(a);
+			putchar(b);
+
+		if (a == 57 && b == 57)
+		{
+			break;
+		}
+		else
+		{
+			putchar(',');
+			putchar(' ');
+		}
 		}
 	}
-	putchar('\n');
+	putchar ('\n');
 
 	return (0);
 }
