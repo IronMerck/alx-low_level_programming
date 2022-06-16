@@ -2,7 +2,7 @@
  * File: 101-print_number.c
  * Auth: Brennan D Baraban
  */
-
+#inlcude <stdio.h>
 #include "main.h"
 
 /**
