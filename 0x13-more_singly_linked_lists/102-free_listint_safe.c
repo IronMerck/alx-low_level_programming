@@ -1,37 +1,28 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - frees a listint_t list, even if is in a loop.
- * @h: pointer to starting node in the list.
- *
- * Return: size of the list that was free'd.
+ * free_listint_safe - frees a listint_t list
+ * @h: data type listint_t double pointer of head
+ * Return: the size of the list that was free'd
  */
-
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *node = NULL;
-	size_t count = 0;
+	size_t counter = 0;
+	listint_t *safe_node = *h;
+	listint_t *tmp_node;
 
-	if (h == NULL)
+	if (!h)
 		return (0);
-
-	if (*h == NULL)
-		return (0);
-
-	node = *h;
-
-	while (node != NULL)
+	while (safe_node != NULL)
 	{
-		count++;
-		node = (*h)->next;
-		free(*h);
-		if (node >= *h)
-		{
-			*h = NULL;
-			return (count);
-		}
-		*h = node;
-	}
+		counter++;
+		tmp_node = safe_node;
+		safe_node = safe_node->next;
+		free(tmp_node);
 
-	return (count);
+		if (tmp_node < safe_node)
+			break;
+	}
+	*h = NULL;
+	return (counter);
 }
