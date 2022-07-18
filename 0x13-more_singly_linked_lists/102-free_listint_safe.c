@@ -1,26 +1,32 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdio.h>
 
 /**
- * print_listint_safe - prints listint_t list with or without loops
- * @head: pointer to start of linked list
- * Return: number of nodes
+ * free_listint_safe - frees a list
+ * @h: the pointer to the start of list to free
+ * Return: size of free'd list (in nodes?)
  */
-size_t print_listint_safe(const listint_t *head)
+size_t free_listint_safe(listint_t **h)
 {
-	listint_t *start;
-	size_t i;
+	size_t nodeCount = 0;
+	listint_t *temp = NULL;
 
-	start = head;
-	if (h == NULL)
-		return (0);
-
-	for (i = 0; h != NULL && h != start; i++)
+	if (!(h && *h))
+		return (nodeCount);
+	while (*h)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		nodeCount++;
+		if (*h > (*h)->next)
+		{
+			temp = *h;
+			*h = (*h)->next;
+			free(temp);
+		}
+		else
+		{
+			free(*h);
+			*h = NULL;
+		}
 	}
-	return (i);
+	*h = NULL;
+	return (nodeCount);
 }
